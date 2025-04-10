@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Tobico Farm - Sản phẩm nông nghiệp chất lượng cao</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="top-bar bg-success text-white py-2">
+    <div class="container d-flex justify-content-between">
+      <small>Hotline: 1900 636 025</small>
+      <small>Email: info@tobicotobicofarm.vn</small>
+    </div>
+  </div>
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center" href="#">
+        <img src="images/logo.png" alt="Logo" height="40" onerror="this.style.display='none'">
+        <span class="fw-bold text-success">Tobico Farm</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto me-3">
+          <li class="nav-item"><a class="nav-link active" href="#">Trang Chủ</a></li>
+          <li class="nav-item"><a class="nav-link" href="#products">Sản Phẩm</a></li>
+          <li class="nav-item"><a class="nav-link" href="#cart">Giỏ Hàng</a></li>
+          <li class="nav-item"><a class="nav-link" href="#checkout">Thanh Toán</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Liên Hệ</a></li>
+          <li class="nav-item"><a class="nav-link" href="admin.html" target="_blank">Quản Trị</a></li>
+        </ul>
+        <div class="search-container">
+          <form class="d-flex">
+            <input class="form-control me-2" type="search" placeholder="Tìm kiếm sản phẩm" id="search-input">
+            <button class="btn btn-outline-success" type="submit">Tìm</button>
+          </form>
+          <div class="search-results" id="search-results"></div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div id="banner" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="images/banner.jpg" class="d-block w-100" alt="Banner">
+        <div class="carousel-caption d-none d-md-block">
+          <h5 class="text-success">Nông nghiệp sạch - Tương lai xanh</h5>
+          <p class="text-success">Sản phẩm nông nghiệp chất lượng cao cho gia đình bạn</p>
+        </div>
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#banner" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon"></span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#banner" data-bs-slide="next">
+      <span class="carousel-control-next-icon"></span>
+    </button>
+  </div>
+
+  <section id="products" class="py-5 bg-light">
+    <div class="container">
+      <h2 class="text-center mb-4 text-success">Danh mục sản phẩm</h2>
+      <ul class="nav nav-tabs justify-content-center mb-4" id="productTab" role="tablist">
+        <li class="nav-item" role="presentation">
+          <button class="nav-link active" id="seeds-tab" data-bs-toggle="tab" data-bs-target="#seeds" type="button" role="tab">Hạt Giống</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="fertilizers-tab" data-bs-toggle="tab" data-bs-target="#fertilizers" type="button" role="tab">Phân Bón</button>
+        </li>
+      </ul>
+      <div class="tab-content" id="productTabContent">
+        <div class="tab-pane fade show active" id="seeds" role="tabpanel">
+          <div class="row" id="seeds-products">
+            <div id="dynamic-products" class="row"></div>
+            
+            <!-- Hạt giống -->
+            <div class="col-md-4 col-lg-3 mb-4">
+              <div class="card h-100 shadow-sm product-card">
+                <img src="images/products/seeds-1.jpg" class="card-img-top" alt="Hạt giống rau cải">
+                <div class="card-body d-flex flex-column">
+                  <h6 class="card-title text-success">Hạt giống rau cải</h6>
+                  <div class="product-price fw-bold mb-2">50.000 VND</div>
+                  <button class="btn btn-success add-to-cart w-100">Thêm vào giỏ hàng</button>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4 col-lg-3 mb-4">
+              <div class="card h-100 shadow-sm product-card">
+                <img src="images/products/seeds-2.jpg" class="card-img-top" alt="Hạt giống dưa lưới">
+                <div class="card-body d-flex flex-column">
+                  <h6 class="card-title text-success">Hạt giống dưa lưới</h6>
+                  <div class="product-price fw-bold mb-2">50.000 VND</div>
+                  <button class="btn btn-success add-to-cart w-100">Thêm vào giỏ hàng</button>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4 col-lg-3 mb-4">
+              <div class="card h-100 shadow-sm product-card">
+                <img src="images/products/seeds-3.jpg" class="card-img-top" alt="Hạt giống bắp cải">
+                <div class="card-body d-flex flex-column">
+                  <h6 class="card-title text-success">Hạt giống bắp cải</h6>
+                  <div class="product-price fw-bold mb-2">50.000 VND</div>
+                  <button class="btn btn-success add-to-cart w-100">Thêm vào giỏ hàng</button>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4 col-lg-3 mb-4">
+              <div class="card h-100 shadow-sm product-card">
+                <img src="images/products/seeds-4.jpg" class="card-img-top" alt="Hạt giống cà chua">
+                <div class="card-body d-flex flex-column">
+                  <h6 class="card-title text-success">Hạt giống cà chua</h6>
+                  <div class="product-price fw-bold mb-2">50.000 VND</div>
+                  <button class="btn btn-success add-to-cart w-100">Thêm vào giỏ hàng</button>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4 col-lg-3 mb-4">
+              <div class="card h-100 shadow-sm product-card">
+                <img src="images/products/seeds-5.jpg" class="card-img-top" alt="Hạt giống ớt">
+                <div class="card-body d-flex flex-column">
+                  <h6 class="card-title text-success">Hạt giống ớt</h6>
+                  <div class="product-price fw-bold mb-2">50.000 VND</div>
+                  <button class="btn btn-success add-to-cart w-100">Thêm vào giỏ hàng</button>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4 col-lg-3 mb-4">
+              <div class="card h-100 shadow-sm product-card">
+                <img src="images/products/seeds-6.jpg" class="card-img-top" alt="Hạt giống dưa hấu">
+                <div class="card-body d-flex flex-column">
+                  <h6 class="card-title text-success">Hạt giống dưa hấu</h6>
+                  <div class="product-price fw-bold mb-2">50.000 VND</div>
+                  <button class="btn btn-success add-to-cart w-100">Thêm vào giỏ hàng</button>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4 col-lg-3 mb-4">
+              <div class="card h-100 shadow-sm product-card">
+                <img src="images/products/seeds-7.jpg" class="card-img-top" alt="Hạt giống đậu cove">
+                <div class="card-body d-flex flex-column">
+                  <h6 class="card-title text-success">Hạt giống đậu cove</h6>
+                  <div class="product-price fw-bold mb-2">50.000 VND</div>
+                  <button class="btn btn-success add-to-cart w-100">Thêm vào giỏ hàng</button>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4 col-lg-3 mb-4">
+              <div class="card h-100 shadow-sm product-card">
+                <img src="images/products/seeds-8.jpg" class="card-img-top" alt="Hạt giống mồng tơi">
+                <div class="card-body d-flex flex-column">
+                  <h6 class="card-title text-success">Hạt giống mồng tơi</h6>
+                  <div class="product-price fw-bold mb-2">50.000 VND</div>
+                  <button class="btn btn-success add-to-cart w-100">Thêm vào giỏ hàng</button>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4 col-lg-3 mb-4">
+              <div class="card h-100 shadow-sm product-card">
+                <img src="images/products/seeds-9.jpg" class="card-img-top" alt="Hạt giống xà lách">
+                <div class="card-body d-flex flex-column">
+                  <h6 class="card-title text-success">Hạt giống xà lách</h6>
+                  <div class="product-price fw-bold mb-2">50.000 VND</div>
+                  <button class="btn btn-success add-to-cart w-100">Thêm vào giỏ hàng</button>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4 col-lg-3 mb-4">
+              <div class="card h-100 shadow-sm product-card">
+                <img src="images/products/seeds-10.jpg" class="card-img-top" alt="Hạt giống rau muống">
+                <div class="card-body d-flex flex-column">
+                  <h6 class="card-title text-success">Hạt giống rau muống</h6>
+                  <div class="product-price fw-bold mb-2">50.000 VND</div>
+                  <button class="btn btn-success add-to-cart w-100">Thêm vào giỏ hàng</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tab-pane fade" id="fertilizers" role="tabpanel">
+          <div class="row" id="fertilizers-products">
+            <!-- Phân bón -->
+            <div class="col-md-4 col-lg-3 mb-4">
+              <div class="card h-100 shadow-sm product-card">
+                <img src="images/products/fertilizer-1.jpg" class="card-img-top" alt="Phân hữu cơ">
+                <div class="card-body d-flex flex-column">
+                  <h6 class="card-title text-success">Phân hữu cơ</h6>
+                  <div class="product-price fw-bold mb-2">50.000 VND</div>
+                  <button class="btn btn-success add-to-cart w-100">Thêm vào giỏ hàng</button>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4 col-lg-3 mb-4">
+              <div class="card h-100 shadow-sm product-card">
+                <img src="images/products/fertilizer-2.jpg" class="card-img-top" alt="Phân NPK">
+                <div class="card-body d-flex flex-column">
+                  <h6 class="card-title text-success">Phân NPK</h6>
+                  <div class="product-price fw-bold mb-2">50.000 VND</div>
+                  <button class="btn btn-success add-to-cart w-100">Thêm vào giỏ hàng</button>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4 col-lg-3 mb-4">
+              <div class="card h-100 shadow-sm product-card">
+                <img src="images/products/fertilizer-3.jpg" class="card-img-top" alt="Phân bón tổng hợp">
+                <div class="card-body d-flex flex-column">
+                  <h6 class="card-title text-success">Phân bón tổng hợp</h6>
+                  <div class="product-price fw-bold mb-2">50.000 VND</div>
+                  <button class="btn btn-success add-to-cart w-100">Thêm vào giỏ hàng</button>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4 col-lg-3 mb-4">
+              <div class="card h-100 shadow-sm product-card">
+                <img src="images/products/fertilizer-4.jpg" class="card-img-top" alt="Phân bón lá">
+                <div class="card-body d-flex flex-column">
+                  <h6 class="card-title text-success">Phân bón lá</h6>
+                  <div class="product-price fw-bold mb-2">50.000 VND</div>
+                  <button class="btn btn-success add-to-cart w-100">Thêm vào giỏ hàng</button>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4 col-lg-3 mb-4">
+              <div class="card h-100 shadow-sm product-card">
+                <img src="images/products/fertilizer-5.jpg" class="card-img-top" alt="Phân bón cho cây ăn quả">
+                <div class="card-body d-flex flex-column">
+                  <h6 class="card-title text-success">Phân bón cho cây ăn quả</h6>
+                  <div class="product-price fw-bold mb-2">50.000 VND</div>
+                  <button class="btn btn-success add-to-cart w-100">Thêm vào giỏ hàng</button>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4 col-lg-3 mb-4">
+              <div class="card h-100 shadow-sm product-card">
+                <img src="images/products/fertilizer-6.jpg" class="card-img-top" alt="Phân bón dạng hạt">
+                <div class="card-body d-flex flex-column">
+                  <h6 class="card-title text-success">Phân bón dạng hạt</h6>
+                  <div class="product-price fw-bold mb-2">50.000 VND</div>
+                  <button class="btn btn-success add-to-cart w-100">Thêm vào giỏ hàng</button>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4 col-lg-3 mb-4">
+              <div class="card h-100 shadow-sm product-card">
+                <img src="images/products/fertilizer-7.jpg" class="card-img-top" alt="Phân bón vi sinh">
+                <div class="card-body d-flex flex-column">
+                  <h6 class="card-title text-success">Phân bón vi sinh</h6>
+                  <div class="product-price fw-bold mb-2">50.000 VND</div>
+                  <button class="btn btn-success add-to-cart w-100">Thêm vào giỏ hàng</button>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4 col-lg-3 mb-4">
+              <div class="card h-100 shadow-sm product-card">
+                <img src="images/products/fertilizer-8.jpg" class="card-img-top" alt="Phân bón lỏng">
+                <div class="card-body d-flex flex-column">
+                  <h6 class="card-title text-success">Phân bón lỏng</h6>
+                  <div class="product-price fw-bold mb-2">50.000 VND</div>
+                  <button class="btn btn-success add-to-cart w-100">Thêm vào giỏ hàng</button>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4 col-lg-3 mb-4">
+              <div class="card h-100 shadow-sm product-card">
+                <img src="images/products/fertilizer-9.jpg" class="card-img-top" alt="Phân bón cao cấp">
+                <div class="card-body d-flex flex-column">
+                  <h6 class="card-title text-success">Phân bón cao cấp</h6>
+                  <div class="product-price fw-bold mb-2">50.000 VND</div>
+                  <button class="btn btn-success add-to-cart w-100">Thêm vào giỏ hàng</button>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4 col-lg-3 mb-4">
+              <div class="card h-100 shadow-sm product-card">
+                <img src="images/products/fertilizer-10.jpg" class="card-img-top" alt="Phân bón cho rau xanh">
+                <div class="card-body d-flex flex-column">
+                  <h6 class="card-title text-success">Phân bón cho rau xanh</h6>
+                  <div class="product-price fw-bold mb-2">50.000 VND</div>
+                  <button class="btn btn-success add-to-cart w-100">Thêm vào giỏ hàng</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="cart" class="py-5">
+    <div class="container">
+      <h2 class="text-center mb-4 text-success">Giỏ Hàng</h2>
+      <div id="cart-items">
+        <p>Giỏ hàng trống.</p>
+      </div>
+      <div class="text-center mt-3">
+        <a href="#checkout" class="btn btn-success proceed-to-checkout" style="display: none;">Tiến hành thanh toán</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="checkout" class="py-5 bg-light">
+    <div class="container">
+      <h2 class="text-center mb-4 text-success">Thanh Toán</h2>
+      <form id="checkout-form">
+        <div class="row mb-3">
+          <div class="col-md-6">
+            <div class="mb-3">
+              <label for="fullName" class="form-label">Họ và tên</label>
+              <input type="text" class="form-control" id="fullName" required>
+            </div>
+            <div class="mb-3">
+              <label for="email" class="form-label">Email</label>
+              <input type="email" class="form-control" id="email" required>
+            </div>
+            <div class="mb-3">
+              <label for="phone" class="form-label">Số điện thoại</label>
+              <input type="tel" class="form-control" id="phone" required>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="mb-3">
+              <label for="address" class="form-label">Địa chỉ giao hàng</label>
+              <textarea class="form-control" id="address" rows="3" required></textarea>
+            </div>
+            <div class="mb-3">
+              <label for="paymentMethod" class="form-label">Phương thức thanh toán</label>
+              <select class="form-select" id="paymentMethod" required>
+                <option value="">Chọn phương thức thanh toán</option>
+                <option value="cod">Thanh toán khi nhận hàng (COD)</option>
+                <option value="vnpay">VNPay</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="text-center">
+          <button type="submit" class="btn btn-success" id="place-order">Đặt hàng</button>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <div id="vnpay-redirect-screen">
+    <img src="https://vnpay.vn/assets/images/logo-icon/logo-primary.svg" alt="VNPay Logo">
+    <h4>Đang chuyển hướng tới cổng thanh toán VNPay</h4>
+    <div class="vnpay-loading">
+      <div class="vnpay-loading-bar"></div>
+    </div>
+    <p class="vnpay-message">Vui lòng không tắt trình duyệt hoặc làm mới trang</p>
+    <button class="vnpay-btn" id="vnpay-cancel">Hủy thanh toán</button>
+  </div>
+
+  <section id="contact" class="py-5">
+    <div class="container">
+      <h2 class="text-center mb-4 text-success">Liên Hệ</h2>
+      <div class="row">
+        <div class="col-md-6">
+          <h5 class="text-success">Thông tin liên hệ</h5>
+          <p>Địa chỉ: 123 Đường ABC, Quận XYZ, TP. Hồ Chí Minh</p>
+          <p>Số điện thoại: 0123 456 789</p>
+          <p>Email: info@tobicoobicofarm.vn</p>
+        </div>
+        <div class="col-md-6">
+          <h5 class="text-success">Gửi yêu cầu hỗ trợ</h5>
+          <form id="contact-form">
+            <div class="mb-3">
+              <label for="contactName" class="form-label">Họ và Tên</label>
+              <input type="text" class="form-control" id="contactName" required>
+            </div>
+            <div class="mb-3">
+              <label for="contactEmail" class="form-label">Email</label>
+              <input type="email" class="form-control" id="contactEmail" required>
+            </div>
+            <div class="mb-3">
+              <label for="contactMessage" class="form-label">Nội dung</label>
+              <textarea class="form-control" id="contactMessage" rows="3" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-success">Gửi yêu cầu</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="py-4 bg-success text-white text-center">
+    <div class="container">
+      <p class="mb-0">© 2025 Tobico Farm. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/script.js"></script>
+</body>
+</html>

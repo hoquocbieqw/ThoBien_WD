@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+
+<html lang="vi">
+<head>
+<meta charset="utf-8"/>
+<title>Trang Quản Trị - Tobico Farm</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+<style>
+    .form-inline input, .form-inline button {
+      margin-right: 8px;
+    }
+  </style>
+</head>
+<body class="p-4">
+<div class="container">
+<h1 class="mb-4 text-success">🛠️ Trang Quản Trị Tobico Farm</h1>
+<!-- ĐƠN HÀNG -->
+<h3 class="mt-4">🛒 Danh sách đơn hàng</h3>
+<table class="table table-bordered mt-3" id="orders-table">
+<thead class="table-success">
+<tr>
+<th>Tên khách hàng</th>
+<th>Email</th>
+<th>Số điện thoại</th>
+<th>Địa chỉ</th>
+<th>Sản phẩm</th>
+<th>Tổng tiền</th></tr>
+</thead>
+<tbody></tbody>
+</table>
+<!-- SẢN PHẨM -->
+<h3 class="mt-5">📦 Quản lý sản phẩm</h3>
+<form class="row g-3 mb-4" id="product-form">
+<div class="col-md-3">
+<input class="form-control" id="product-name" placeholder="Tên sản phẩm" required="" type="text"/>
+</div>
+<div class="col-md-3">
+<input class="form-control" id="product-price" placeholder="Giá (VND)" required="" type="number"/>
+</div>
+<div class="col-md-3">
+<input accept="image/*" class="form-control" id="product-img" required="" type="file"/>
+<div class="mb-3">
+<label class="form-label" for="product-category">Danh mục</label>
+<select class="form-select" id="product-category">
+<option value="seeds">Hạt giống</option>
+<option value="vegetables">Rau củ</option>
+<option value="fertilizers">Phân bón</option>
+</select>
+</div>
+<button class="btn btn-primary" id="save-product">Lưu</button>
+</div>
+<div class="col-md-3 d-flex align-items-center">
+<button class="btn btn-success me-2" id="save-product" type="submit">Thêm</button>
+<button class="btn btn-secondary d-none" id="cancel-edit" type="button">Hủy</button>
+</div>
+</form>
+<table class="table table-bordered" id="products-table">
+<thead class="table-success">
+<tr>
+<th>Tên</th>
+<th>Giá</th>
+<th>Ảnh</th>
+<th>Hành động</th>
+</tr>
+</thead>
+<tbody></tbody>
+</table>
+</div>
+<script>
+    let products = JSON.parse(localStorage.getItem('products') || '[]');
+    let editingIndex = null;
+
+    function loadOrders() {
+      const orders = JSON.parse(localStorage.getItem('orders') || '[]');
+      const tbody = document.querySelector('#orders-table tbody');
+      tbody.innerHTML = '';
+      orders.forEach(order => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td>${order.name}</td>
+          <td>${order.email}</td>
+          <td>${order.phone}</td>
+          <td>${order.address}</td>
+          <td><ul>${
+        order.cart.map(item => `<li>${item.title} (x${item.quantity})</li>`).join('') +
+        `</ul></td><td>` +
+        order.cart.reduce((total, item) => total + (item.price * item.quantity), 0).toLocaleString() + ' VND'
+        }</ul></td>
+        `;
+        tbody.appendChild(row);
+      });
+    }
+
+    function renderProducts() {
+      const tbody = document.querySelector('#products-table tbody');
+      tbody.innerHTML = '';
+      products.forEach((product, index) => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td>${product.name}</td>
+          <td>${Number(product.price).toLocaleString()} VND</td>
+          <td><img src="${product.img}" alt="${product.name}" width="50"/></td>
+          <td>
+            <button class="btn btn-sm btn-warning me-2" onclick="editProduct(${index})">Sửa</button>
+            <button class="btn btn-sm btn-danger" onclick="deleteProduct(${index})">Xoá</button>
+          </td>
+        `;
+        tbody.appendChild(row);
+      });
+      localStorage.setItem('products', JSON.stringify(products));
+    }
+
+    document.getElementById('product-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const name = document.getElementById('product-name').value.trim();
+      const price = document.getElementById('product-price').value.trim();
+      const fileInput = document.getElementById('product-img');
+      const file = fileInput.files[0];
+
+      if (!file) {
+        alert('Vui lòng chọn ảnh sản phẩm');
+        return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = function(e) {
+      const imgDataUrl = e.target.result;
+      const product = { name, price, img: imgDataUrl };
+
+      if (editingIndex !== null) {
+        products[editingIndex] = product;
+        editingIndex = null;
+        document.getElementById('save-product').textContent = 'Thêm';
+        document.getElementById('cancel-edit').classList.add('d-none');
+      } else {
+        products.push(product);
+    }
+
+      localStorage.setItem('products', JSON.stringify(products));
+      renderProducts();
+      document.getElementById('product-form').reset();
+    };
+
+    reader.readAsDataURL(file);
+
+      this.reset();
+      renderProducts();
+    });
+
+    document.getElementById('cancel-edit').addEventListener('click', () => {
+      editingIndex = null;
+      document.getElementById('product-form').reset();
+      document.getElementById('save-product').textContent = 'Thêm';
+      document.getElementById('cancel-edit').classList.add('d-none');
+    });
+
+    window.editProduct = function(index) {
+      const product = products[index];
+      document.getElementById('product-name').value = product.name;
+      document.getElementById('product-price').value = product.price;
+      document.getElementById('product-img').value = product.img;
+      editingIndex = index;
+      document.getElementById('save-product').textContent = 'Cập nhật';
+      document.getElementById('cancel-edit').classList.remove('d-none');
+    }
+
+    window.deleteProduct = function(index) {
+      if (confirm('Bạn có chắc chắn muốn xoá sản phẩm này?')) {
+        products.splice(index, 1);
+        renderProducts();
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      loadOrders();
+      renderProducts();
+    });
+  </script>
+</body>
+</html>
